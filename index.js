@@ -4,13 +4,17 @@
 
 const Body = document.getElementById("main-body");
 let content;
+let p = document.createElement("p");
+Body.appendChild(p);
+
+let i;
 
 let isMultiple = (i) => {
-    if (Number.isInteger(i/3) && Number.isInteger(i/5)){
+    if (Number.isInteger(i / 3) && Number.isInteger(i / 5)) {
         content = "FizzBuzz";
-    } else if (Number.isInteger(i/3)){
-       content = "Fizz";
-    } else if (Number.isInteger(i/5)){
+    } else if (Number.isInteger(i / 3)) {
+        content = "Fizz";
+    } else if (Number.isInteger(i / 5)) {
         content = "Buzz";
     } else {
         content = i;
@@ -18,20 +22,17 @@ let isMultiple = (i) => {
 };
 
 let printToPage = () => {
-    let p = document.createElement("p");
     console.log(content);
-    p.textContent = content;
-    Body.appendChild(p);
+    p.textContent += ((i<100) ? `${content} , ` : content);
 }
 
 
 let numCounter = () => {
-    let i;
-    for (i=1; i<101 ; i++) {
+    for (i = 1; i < 101; i++) {
         isMultiple(i);
         printToPage();
     };
-    
+
 };
 
 numCounter();
